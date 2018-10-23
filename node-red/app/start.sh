@@ -7,4 +7,4 @@ mkdir -p /data/node-red/user/lib/flows || true
 cp /usr/src/app/flows/* /data/node-red/user/lib/flows/
 
 # Start app
-node-red --settings /usr/src/app/settings.js
+node-red-pi --settings /usr/src/app/settings.js

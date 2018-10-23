@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/iot_hub.iml" filepath="$PROJECT_DIR$/.idea/iot_hub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/node-red/node-red.iml" filepath="$PROJECT_DIR$/node-red/node-red.iml" />
     </modules>
   </component>
 </project>
