@@ -18,7 +18,7 @@ RUN npm cache verify && \
 		curl && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN ( curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered ) | /bin/sh -c --
+RUN . "/usr/bin/curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered"
 
 RUN JOBS=MAX npm install -g --production --unsafe-perm \
        	node-sense-hat && \
