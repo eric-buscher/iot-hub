@@ -5,10 +5,7 @@ services:
     depends_on:
     - sense-hat
     expose:
-    - "80:80"
-    labels:
-      io.resin.features.dbus: '1'
-      io.resin.features.supervisor-api: '1'
+    - "80"
     restart: always
     volumes:
     - 'resin-data:/data'
@@ -22,6 +19,7 @@ services:
     - "/dev/gpiochip1:/dev/gpiochip1"
     expose:
     - "8080"
+    init: true
     labels:
       io.resin.features.dbus: '1'
     volumes:
