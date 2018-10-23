@@ -1,0 +1,30 @@
+version: '2'
+services:
+  node-red:
+    build: ./node-red
+    depends_on:
+    - sense-hat
+    expose:
+    - "80"
+    labels:
+      io.resin.features.dbus: '1'
+      io.resin.features.supervisor-api: '1'
+    restart: always
+    volumes:
+    - 'resin-data:/data'
+  sense-hat:
+    build: ./sense-hat
+    cap_add:
+    - SYS_RAWIO
+    devices:
+    - "/dev/gpiomem:/dev/gpiomem"
+    - "/dev/gpiochip0:/dev/gpiochip0"
+    - "/dev/gpiochip1:/dev/gpiochip1"
+    expose:
+    - "8080"
+    labels:
+      io.resin.features.dbus: '1'
+    volumes:
+    - 'resin-data:/data'
+volumes:
+  resin-data:
