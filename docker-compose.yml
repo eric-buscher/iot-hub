@@ -6,8 +6,8 @@ services:
     - SYS_RAWIO
     devices:
     - '/dev/fb0:/dev/fb0'
-    expose:
-    - "80"
+    ports:
+    - "80:1880"
     labels:
       io.resin.features.kernel-modules: '1'
       io.resin.features.dbus: '1'
