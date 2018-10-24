@@ -12,7 +12,7 @@ WORKDIR /usr/src/app
 RUN export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 # Install node modules, including i2c-bus without carrying all the deps in the layers
-RUN JOBS=MAX npm install -g node-sense-hat node-red node-red-contrib-resinio --production && \
+RUN JOBS=MAX npm install -g node-sense-hat node-red-pi node-red-contrib-resinio --production && \
 	npm cache clean --force && rm -rf /tmp/*
 
 # This will copy all files in our root to the working  directory in the container
