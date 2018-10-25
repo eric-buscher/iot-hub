@@ -11,31 +11,39 @@ WORKDIR /usr/src/app
 
 RUN export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
+RUN apk --no-cache add \
+		py-rpigpio && \
+	apk --no-cache add --virtual \
+		builds-deps \
+		build-base \
+		python && \
+	npm install && \
+	npm rebuild bcrypt --build-from-source && \
 # Install node modules, including i2c-bus without carrying all the deps in the layers
-RUN apk update && \
-	apk add --no-cache \
-		make \
-		gcc \
-		g++ \
-		py2-bcrypt \
-		python2 && \
-    JOBS=MAX npm install -g \
-        node-red \
-        node-red-contrib-resinio \
-        node-red-node-pi-gpiod \
-        node-red-node-pi-sense-hat \
+#RUN apk update && \
+#	apk add --no-cache \
+#		make \
+#		gcc \
+#		g++ \
+#		python2 && \
+	JOBS=MAX npm install -g \
+		node-red \
+	    node-red-contrib-resinio \
+	    node-red-node-pi-gpiod \
+	    node-red-node-pi-sense-hat \
     --production && \
-    apk del \
-        make \
-        gcc \
-        g++ \
-        py2-bcrypt \
-        python2 && \
-	npm cache clean --force && \
-	rm -rf /tmp/*
+#    apk del \
+#        make \
+#        gcc \
+#        g++ \
+#        python2 && \
+	apk del \
+		builds-deps \
+		build-base \
+		python
 
 #Add the current user to the gpio group to access the nrgpio script for interacting with the gpio pins
-RUN sudo adduser $USER gpio
+RUN addgroup $USER gpio
 
 # This will copy all files in our root to the working  directory in the container
 COPY ./app ./
