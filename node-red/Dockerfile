@@ -49,5 +49,7 @@ COPY ./app ./
 RUN mkdir -p /data/node-red/user/lib/flows || true
 RUN cp /usr/src/app/flows/* /data/node-red/user/lib/flows/
 
+ENTRYPOINT ["/sbin/tini","--"]
+
 # server.js will run when container starts up on the device
 CMD ["node-red","--max-old-space-size=256","red.js"]
