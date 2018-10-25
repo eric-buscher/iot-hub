@@ -12,31 +12,34 @@ WORKDIR /usr/src/app
 RUN export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 # Install node modules, including i2c-bus without carrying all the deps in the layers
-RUN apk update && \
-	apk --no-cache add --virtual \
-		builds-deps \
+RUN apk add --no-cache --update --upgrade --virtual node-build-deps \
 		build-base \
-		python2 && \
-#		py2-pip && \
-	npm install && \
-	npm rebuild bcrypt --build-from-source && \
-	npm update -g && \
-#	pip install \
-#		pillow && \
-#	apk --no-cache add \
-#   		py2-rpigpio && \
-	JOBS=MAX npm install -g \
+    	make \
+    	gcc \
+    	g++ \
+    	libgcc \
+    	libstdc++ \
+    	libuv \
+    	libcrypto1.0 \
+    	libssl1.0 \
+    	linux-headers \
+        linux-rpi-dev \
+    	musl \
+    	python-dev && \
+    npm install npm && \
+	JOBS=MAX npm update -g \
+		node-pre-gyp \
+		rpio \
+	    rpi-gpio \
 		node-sense-hat \
 		node-red \
 	    node-red-contrib-resinio \
-	    node-red-node-pi-gpiod \
 	    node-red-node-pi-sense-hat \
     --production && \
 	apk del \
-		builds-deps \
-		build-base \
-		python2
-#		py2-pip
+		node-build-deps && \
+	npm cache clean --force && \
+		rm -rf /tmp/*
 
 #Add the current user to the gpio group to access the nrgpio script for interacting with the gpio pins
 RUN addgroup $USER gpio
