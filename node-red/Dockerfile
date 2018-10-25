@@ -13,29 +13,30 @@ RUN export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 # Install node modules, including i2c-bus without carrying all the deps in the layers
 RUN apk update && \
-	apk add --no-cache \
-		make \
-		gcc \
-		g++ \
-		py2-bcrypt \
-		python2 && \
-    JOBS=MAX npm install -g \
-        node-red \
-        node-red-contrib-resinio \
-        node-red-node-pi-gpiod \
-        node-red-node-pi-sense-hat \
+	apk --no-cache add --virtual \
+		builds-deps \
+		build-base \
+		python2 \
+		sense-hat && \
+	npm install && \
+	npm rebuild bcrypt --build-from-source && \
+	pip-3.2 install \
+		pillow && \
+	apk --no-cache add \
+   		py2-rpigpio && \
+	JOBS=MAX npm install -g \
+		node-red \
+	    node-red-contrib-resinio \
+	    node-red-node-pi-gpiod \
+	    node-red-node-pi-sense-hat \
     --production && \
-    apk del \
-        make \
-        gcc \
-        g++ \
-        py2-bcrypt \
-        python2 && \
-	npm cache clean --force && \
-	rm -rf /tmp/*
+	apk del \
+		builds-deps \
+		build-base \
+		python2
 
 #Add the current user to the gpio group to access the nrgpio script for interacting with the gpio pins
-RUN sudo adduser $USER gpio
+RUN addgroup $USER gpio
 
 # This will copy all files in our root to the working  directory in the container
 COPY ./app ./
