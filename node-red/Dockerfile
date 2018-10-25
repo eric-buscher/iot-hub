@@ -50,10 +50,7 @@ RUN mkdir -p /data/node-red/user/lib/flows || true
 RUN cp /usr/src/app/flows/* /data/node-red/user/lib/flows/
 
 # Add Tini
-ENV TINI_VERSION v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--"]
+ENTRYPOINT ["/sbin/tini", "--"]
 
 # server.js will run when container starts up on the device
 CMD ["node-red","--max-old-space-size=256","red.js"]
