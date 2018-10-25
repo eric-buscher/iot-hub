@@ -3,8 +3,6 @@
 # Note the node:slim image doesn't have node-gyp
 FROM resin/raspberrypi3-alpine-node:8
 
-EXPOSE 1880
-
 # Defines our working directory in container
 RUN mkdir -p /usr/src/app/
 WORKDIR /usr/src/app
