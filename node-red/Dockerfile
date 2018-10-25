@@ -24,7 +24,7 @@ RUN apk add --no-cache --update --upgrade --virtual node-build-deps \
         linux-rpi-dev \
     	musl \
     	python-dev && \
-    npm install npm && \
+    npm i -g npm && \
 	JOBS=MAX npm update -g \
 		node-pre-gyp \
 		rpio \
