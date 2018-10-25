@@ -53,4 +53,4 @@ RUN cp /usr/src/app/flows/* /data/node-red/user/lib/flows/
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # server.js will run when container starts up on the device
-CMD ["node-red","--max-old-space-size=256","red.js"]
+CMD ["/usr/local/bin/node-red-pi","--max-old-space-size=256"]
