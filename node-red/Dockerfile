@@ -25,7 +25,7 @@ RUN apk add --no-cache --update --upgrade --virtual node-build-deps \
     	musl \
     	python-dev && \
     npm i -g npm && \
-	JOBS=MAX npm update -g \
+	JOBS=MAX npm install --update -g \
 		node-pre-gyp \
 		rpio \
 	    rpi-gpio \
@@ -53,4 +53,4 @@ RUN cp /usr/src/app/flows/* /data/node-red/user/lib/flows/
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # server.js will run when container starts up on the device
-CMD ["/usr/local/bin/node-red-pi","--max-old-space-size=256"]
+CMD ["/usr/local/lib/npm/bin/node-red-pi","--max-old-space-size=256"]
