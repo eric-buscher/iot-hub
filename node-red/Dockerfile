@@ -16,15 +16,17 @@ RUN apk update && \
 	apk --no-cache add --virtual \
 		builds-deps \
 		build-base \
-		python2 \
-		sense-hat && \
+		python2 && \
+#		py2-pip && \
 	npm install && \
 	npm rebuild bcrypt --build-from-source && \
-	pip-3.2 install \
-		pillow && \
-	apk --no-cache add \
-   		py2-rpigpio && \
+	npm update -g && \
+#	pip install \
+#		pillow && \
+#	apk --no-cache add \
+#   		py2-rpigpio && \
 	JOBS=MAX npm install -g \
+		node-sense-hat \
 		node-red \
 	    node-red-contrib-resinio \
 	    node-red-node-pi-gpiod \
@@ -34,6 +36,7 @@ RUN apk update && \
 		builds-deps \
 		build-base \
 		python2
+#		py2-pip
 
 #Add the current user to the gpio group to access the nrgpio script for interacting with the gpio pins
 RUN addgroup $USER gpio
