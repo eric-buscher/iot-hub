@@ -5,6 +5,18 @@ services:
     cap_add:
     - SYS_RAWIO
     devices:
+    - "/dev/fb0:/dev/fb0"
+    - "/dev/fb1:/dev/fb1"
+    - "/dev/fd:/dev/fd"
+    - "/dev/gpiochip0:/dev/gpiochip0"
+    - "/dev/gpiochip1:/dev/gpiochip1"
+    - "/dev/gpiomem:/dev/gpiomem"
+    - "/dev/i2c-1:/dev/i2c-1"
+    - "/dev/spidev0.0:/dev/spidev0.0"
+    - "/dev/spidev0.1:/dev/spidev0.1"
+    - "/dev/ttyAMA0:/dev/ttyAMA0"
+    - "/dev/ttyS0:/dev/ttyS0"
+    - "/dev/ttyprintk:/dev/ttyprintk"
     - '/dev/fb0:/dev/fb0'
     ports:
     - "80:1880"
@@ -13,8 +25,38 @@ services:
       io.resin.features.firmware: '1'
       io.resin.features.dbus: '1'
       io.resin.features.supervisor-api: '1'
+    network_mode: host
     restart: always
     volumes:
     - 'resin-data:/data'
+  sense-hat-data-logger:
+    cap_add:
+    - SYS_RAWIO
+    devices:
+    - "/dev/fb0:/dev/fb0"
+    - "/dev/fb1:/dev/fb1"
+    - "/dev/fd:/dev/fd"
+    - "/dev/gpiochip0:/dev/gpiochip0"
+    - "/dev/gpiochip1:/dev/gpiochip1"
+    - "/dev/gpiomem:/dev/gpiomem"
+    - "/dev/i2c-1:/dev/i2c-1"
+    - "/dev/spidev0.0:/dev/spidev0.0"
+    - "/dev/spidev0.1:/dev/spidev0.1"
+    - "/dev/ttyAMA0:/dev/ttyAMA0"
+    - "/dev/ttyS0:/dev/ttyS0"
+    - "/dev/ttyprintk:/dev/ttyprintk"
+    labels:
+      io.resin.features.kernel-modules: '1'
+      io.resin.features.firmware: '1'
+      io.resin.features.dbus: '1'
+      io.resin.features.supervisor-api: '1'
+    network_mode: host
+    restart: always
+    volumes:
+    - "/etc/localtime:/etc/localtime:ro"
+    - "/etc/timezone:/etc/timezone:ro"
+    - "openhab_addons:/openhab/addons"
+    - "openhab_conf:/openhab/conf"
+    - "resin-data:/openhab/userdata"
 volumes:
   resin-data:
