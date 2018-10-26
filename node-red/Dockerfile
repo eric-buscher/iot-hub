@@ -8,8 +8,8 @@ RUN mkdir -p /usr/src/app/ && mkdir -p /usr/share/doc/python-rpi.gpio
 WORKDIR /usr/src/app
 
 # Install node modules, including i2c-bus without carrying all the deps in the layers
-RUN apk add --no-cache make gcc g++ python py-rpigpio py-sensehat && \
-  JOBS=MAX npm install -g node-red node-red-contrib-resinio node-red-node-pisrf \
+RUN apk add --no-cache make gcc g++ python py-rpigpio && \
+  JOBS=MAX npm install -g node-sense-hat node-red node-red-contrib-resinio node-red-node-pisrf \
   node-red-contrib-cast node-red-contrib-google-iot-core node-red-node-pi-sense-hat --production --silent && \
   apk del make gcc g++ && \
   npm cache clean --force && rm -rf /tmp/*
