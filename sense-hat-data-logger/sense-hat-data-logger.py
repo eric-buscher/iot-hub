@@ -1,9 +1,10 @@
 import time
 from datetime import datetime
-from evdev import InputDevice, ecodes, list_devices
 from select import select
+from threading import Thread
+
+from libevdev import InputDevice, ecodes, list_devices
 from sense_hat import SenseHat
-from threading2 import Thread
 
 ## Logging Settings
 TEMP_H=True
@@ -112,6 +113,7 @@ def timed_log():
         if logging == True:
             log_data()
         time.sleep(DELAY)
+
 
 ## Main Program
 sense = SenseHat()

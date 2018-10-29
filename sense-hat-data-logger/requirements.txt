@@ -1,0 +1,6 @@
+DateTime
+sense-hat
+sense-hat-display-utils
+Pillow
+libevdev
+standard
