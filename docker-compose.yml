@@ -4,6 +4,8 @@ services:
     build: ./node-red
     cap_add:
     - SYS_RAWIO
+    depends_on:
+    - "sense-hat-data-logger"
     devices:
     - "/dev/gpiochip0:/dev/gpiochip0"
     - "/dev/gpiochip1:/dev/gpiochip1"
@@ -19,7 +21,7 @@ services:
     network_mode: host
     restart: always
     volumes:
-    - 'resin-data:/data'
+    - "balena-data:/data"
   sense-hat-data-logger:
     cap_add:
     - SYS_RAWIO
@@ -35,8 +37,9 @@ services:
       io.resin.features.dbus: '1'
       io.resin.features.supervisor-api: '1'
     network_mode: host
+    privileged: true
     restart: always
     volumes:
-    - 'resin-data:/usr'
+    - "balena-data:/data"
 volumes:
-  resin-data:
+  balena-data:
