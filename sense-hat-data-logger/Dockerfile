@@ -10,4 +10,5 @@ RUN pip install --upgrade pip && \
 COPY . /usr/src/app
 
 # Finally, start our app
-CMD ["python2", "/usr/src/app/Sense_Logger_Final.py"]
+ENTRYPOINT ["python2"]
+CMD ["/usr/src/app/Sense_Logger_Final.py"]
