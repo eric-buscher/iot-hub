@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import time
 from datetime import datetime
 from select import select

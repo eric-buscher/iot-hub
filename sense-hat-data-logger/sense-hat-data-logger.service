@@ -1,0 +1,10 @@
+[Unit]
+Description=sense-hat-data-logger: Telemetry service for the Raspberry Pi 3 Sense Hat
+
+[Service]
+EnvironmentFile=/etc/saved.env
+Type=OneShot
+ExecStart=/etc/init.d/sense-hat-data-logger
+
+[Install]
+WantedBy=basic.target
