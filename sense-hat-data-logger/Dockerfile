@@ -7,8 +7,7 @@ COPY requirements.txt /usr/src/app/
 RUN pip install --upgrade pip && \
 	pip install --no-cache-dir -r requirements.txt
 
-COPY . /usr/src/app
+COPY sense-hat-data-logger.py /usr/src/app
 
-# Finally, start our app
-ENTRYPOINT ["/bin/sh"]
-#CMD ["/usr/src/app/Sense_Logger_Final.py"]
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["/usr/local/bin/python","/usr/src/app/sense-hat-data-logger.py"]
