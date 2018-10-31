@@ -1,6 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-### Dockerized Linux Application template
-# Created by .ignore support plugin (hsz.mobi)
 ### Java template
 # Compiled class file
 *.class
@@ -81,7 +79,6 @@ fabric.properties
 ### Node template
 # Logs
 logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -140,14 +137,7 @@ typings/
 
 # next.js build output
 .next
-### Example user template template
-### Example user template
-
-# IntelliJ project files
-.idea
-*.iml
-out
-gen### Linux template
+### Linux template
 *~
 
 # temporary files which can be created if a process still has a handle open of a deleted file
@@ -161,3 +151,8 @@ gen### Linux template
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
+
+.dockerignore
+**/Dockerfile
+**/LICENCE
+**/README.md

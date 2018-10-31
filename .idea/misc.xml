@@ -3,15 +3,10 @@
   <component name="AndroidGradleBuildConfiguration">
     <option name="USE_CONFIGURATION_ON_DEMAND" value="false" />
   </component>
-  <component name="FrameworkDetectionExcludesConfiguration">
-    <type id="app-engine-flexible" />
-    <type id="appengine-java" />
-  </component>
+  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/root" />
   <component name="Kotlin2JsCompilerArguments">
     <option name="sourceMapEmbedSources" />
     <option name="sourceMapPrefix" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="IntelliJ IDEA Community Edition IC-182.4892.20" project-jdk-type="IDEA JDK" />
 </project>

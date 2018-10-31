@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/iot_hub.iml" filepath="$PROJECT_DIR$/iot_hub.iml" />
-      <module fileurl="file://$PROJECT_DIR$/node-red/node-red.iml" filepath="$PROJECT_DIR$/node-red/node-red.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sense-hat-data-logger/sense-hat-data-logger.iml" filepath="$PROJECT_DIR$/sense-hat-data-logger/sense-hat-data-logger.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sense-hat-data-logger/sense-hat-data-logger.iml" filepath="$PROJECT_DIR$/sense-hat-data-logger/sense-hat-data-logger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/root/iot_hub.iml" filepath="$PROJECT_DIR$/root/iot_hub.iml" />
     </modules>
   </component>
 </project>
